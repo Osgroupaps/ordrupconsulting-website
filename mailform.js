@@ -11,7 +11,7 @@ document.addEventListener('submit',function(e){
 })();
 (function(){
 if(window.CookieConsent)return;
-var CFG={key:'cc_consent',ver:1,months:12,accent:'#b91c1c',dark:'#111827',name:'Ordrup Consulting',policy:'',mail:'jacob@ordrupconsulting.dk'};
+var CFG={key:'cc_consent',ver:1,months:12,accent:'#b91c1c',dark:'#111827',name:'Ordrup Consulting',policy:'/privatlivspolitik/',mail:'jacob@ordrupconsulting.dk'};
 var CATS=[
 {id:'nodvendige',t:'Nødvendige',d:'Gør siden og kontaktformularen brugbar og husker dit valg her. Kan ikke slås fra.',lock:1},
 {id:'praeferencer',t:'Præferencer',d:'Husker valg som sprog og visning. Bruges ikke i dag.'},
@@ -82,3 +82,8 @@ if(state){activate();purge();showFab()}else showBanner()}
 window.CookieConsent={has:has,get:function(){return state?state.c:null},open:openModal,onChange:function(f){listeners.push(f)}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+(function(){
+function go(){if(document.getElementById('ccfoot')||/^\/privatlivspolitik\/?$/.test(location.pathname))return;
+var f=document.createElement('footer');f.id='ccfoot';f.style.cssText='border-top:1px solid #e5e7eb;background:#f9fafb;color:#4b5563;font:14px/1.7 system-ui,sans-serif;padding:26px 20px 70px;text-align:center';
+f.innerHTML='<strong style="color:#111827">Ordrup Consulting</strong> · CVR 39358182<br>Søstrupvej 14, 4300 Holbæk · <a href="mailto:jacob@ordrupconsulting.dk" style="color:#b91c1c">jacob@ordrupconsulting.dk</a><br><a href="/privatlivspolitik/" style="color:#b91c1c">Privatlivspolitik</a> · <a href="#" data-cookie-settings style="color:#b91c1c">Cookieindstillinger</a>';document.body.appendChild(f)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
